@@ -21,7 +21,7 @@ export class SignupService {
   constructor(private http: HttpClient) {}
 
   // test(): Observable<User>{
-  //   return this.http.get<User>(this.signup_url, {responseType: 'json'});
+  //   return this.http.get<User>(this.signup_url);
   // }
 
   createUser(user: User): Observable<User>{

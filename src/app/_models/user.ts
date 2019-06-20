@@ -1,4 +1,5 @@
 export class User{
+    status: string;
     id: string;
     full_name: string;
     user_name: string;
@@ -13,6 +14,7 @@ export class User{
     city: string;
     phone: string;
     designation_id: string;
+    department_id: string;
     salary_id: string;
     working_days_id: string;
     joining_date: string;

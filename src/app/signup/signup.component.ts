@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { SignupService } from '../_services/signup.service';
 import { Router } from '@angular/router';
 import { User } from '../_models/user';
-import { Z_FULL_FLUSH } from 'zlib';
 
 @Component({
   selector: 'app-signup',
@@ -20,8 +19,9 @@ export class SignupComponent implements OnInit {
   createUser(): void{
     let user = new User;
 
-    // this.signupService.test().subscribe(date => {
+    // this.signupService.test().subscribe(data => {
     //   console.log(`hi.....`);
+    //   console.log(data);
     // })
 
     user.full_name = (<HTMLInputElement>document.getElementById("name")).value;
@@ -36,13 +36,18 @@ export class SignupComponent implements OnInit {
     user.personal_address = (<HTMLInputElement>document.getElementById("present_address")).value;
     user.city = (<HTMLInputElement>document.getElementById("city")).value;
     user.phone = (<HTMLInputElement>document.getElementById("phone")).value;
+    user.department_id = (<HTMLInputElement>document.getElementById("department")).value;
     user.designation_id = (<HTMLInputElement>document.getElementById("designation")).value;
     user.salary_id = (<HTMLInputElement>document.getElementById("salary")).value;
-    user.salary_id = (<HTMLInputElement>document.getElementById("working_days")).value;
+    user.working_days_id = (<HTMLInputElement>document.getElementById("working_days")).value;
     user.joining_date = (<HTMLInputElement>document.getElementById("joining_date")).value;
 
-    this.signupService.createUser(user).subscribe(date => {
-      console.log(`successful sign up`);
+    this.signupService.createUser(user).subscribe(data => {
+      console.log(data);
+      if (data[0].status == ""){
+        console.log(data[0].message);
+      }
+      this.router.navigate(['/login']);
     })
   }
 }

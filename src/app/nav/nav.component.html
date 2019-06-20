@@ -1,0 +1,49 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+        <mat-toolbar>Menu</mat-toolbar>
+        <mat-nav-list>
+            <a mat-list-item (click)="viewChanger('dashboard')">Dashboard</a>
+            <a mat-list-item (click)="viewChanger('departments')">Departments</a>
+            <a mat-list-item class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Employees</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" (click)="viewChanger('employee list')">Employee List</a>
+                    <a class="dropdown-item" (click)="viewChanger('add employee')">Add Employee</a>
+                </div>
+            </a>
+            <a mat-list-item (click)="viewChanger('attendance')">Attendance</a>
+            <a mat-list-item class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Payroll Management</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" (click)="viewChanger('salary management')">Manage Salary Detail</a>
+                    <a class="dropdown-item" (click)="viewChanger('employee salary list')">Employee Salary List</a>
+                    <a class="dropdown-item" (click)="viewChanger('payslip')">Generate Payslip</a>
+                </div>
+            </a>
+            <a mat-list-item (click)="viewChanger('settings')">Settings</a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar color="primary">
+            <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
+      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+            <span>HRMS</span>
+        </mat-toolbar>
+        <div *ngIf="chosenView=='dashboard'">
+            <app-dashboard></app-dashboard>
+        </div>
+        <div *ngIf="chosenView=='departments'">
+            <app-departments></app-departments>
+        </div>
+        <div *ngIf="chosenView=='employee list'">
+            <app-employees></app-employees>
+        </div>
+        <div *ngIf="chosenView=='add employee'">
+            <app-add-employee></app-add-employee>
+        </div>
+        <div *ngIf="chosenView=='salary management'">
+            <app-salary-management></app-salary-management>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
