@@ -15,9 +15,9 @@
                     <label for="user_name">Date of Birth</label>
                     <div class="form-group form-inline">
                         <div class="input-group">
-                            <input class="form-control form-control-sm" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #d="ngbDatepicker">
+                            <input class="form-control form-control-sm" placeholder="yyyy-mm-dd" name="date_of_birth" ngbDatepicker #dob="ngbDatepicker">
                             <div class="input-group-append">
-                                <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+                                <button class="btn btn-outline-secondary calendar" (click)="dob.toggle()"></button>
                             </div>
                         </div>
                     </div>
@@ -114,9 +114,9 @@
             <label for="joining_date">Joining Date</label>
             <div class="form-group form-inline">
                 <div class="input-group">
-                    <input class="form-control form-control-sm" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #d="ngbDatepicker">
+                    <input class="form-control form-control-sm" placeholder="yyyy-mm-dd" name="joining_date" ngbDatepicker #jd="ngbDatepicker">
                     <div class="input-group-append">
-                        <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+                        <button class="btn btn-outline-secondary calendar" (click)="jd.toggle()"></button>
                     </div>
                 </div>
             </div>
