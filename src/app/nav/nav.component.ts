@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 })
 export class NavComponent {
 
-  private chosenView = 'add employee'  ;
+  private chosenView = 'employee list'  ;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(

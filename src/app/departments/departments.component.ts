@@ -14,7 +14,7 @@ export class DepartmentsComponent implements AfterViewInit, OnInit {
   dataSource: DepartmentsDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name'];
+  displayedColumns = ['id', 'name', 'action'];
 
   ngOnInit() {
     this.dataSource = new DepartmentsDataSource();

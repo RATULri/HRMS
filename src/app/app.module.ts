@@ -16,6 +16,7 @@ import { EmployeesComponent } from './employees/employees.component';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SalaryManagementComponent } from './salary-management/salary-management.component';
+import { AddDepartmentComponent } from './add-department/add-department.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { SalaryManagementComponent } from './salary-management/salary-management
     DepartmentsComponent,
     EmployeesComponent,
     AddEmployeeComponent,
-    SalaryManagementComponent
+    SalaryManagementComponent,
+    AddDepartmentComponent
   ],
   imports: [
     BrowserModule,

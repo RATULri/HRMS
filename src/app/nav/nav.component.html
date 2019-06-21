@@ -3,7 +3,13 @@
         <mat-toolbar>Menu</mat-toolbar>
         <mat-nav-list>
             <a mat-list-item (click)="viewChanger('dashboard')">Dashboard</a>
-            <a mat-list-item (click)="viewChanger('departments')">Departments</a>
+            <a mat-list-item class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Departments</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" (click)="viewChanger('departments')">Department List</a>
+                    <a class="dropdown-item" (click)="viewChanger('add department')">Add Department</a>
+                </div>
+            </a>
             <a mat-list-item class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Employees</a>
                 <div class="dropdown-menu">
@@ -35,6 +41,9 @@
         </div>
         <div *ngIf="chosenView=='departments'">
             <app-departments></app-departments>
+        </div>
+        <div *ngIf="chosenView=='add department'">
+            <app-add-department></app-add-department>
         </div>
         <div *ngIf="chosenView=='employee list'">
             <app-employees></app-employees>
