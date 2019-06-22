@@ -19,6 +19,7 @@ import { SalaryManagementComponent } from './salary-management/salary-management
 import { AddDepartmentComponent } from './add-department/add-department.component';
 import { SalaryComponent } from './salary/salary.component';
 import { GeneratePayrollComponent } from './generate-payroll/generate-payroll.component';
+import { GeneralSettingsComponent } from './general-settings/general-settings.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { GeneratePayrollComponent } from './generate-payroll/generate-payroll.co
     SalaryManagementComponent,
     AddDepartmentComponent,
     SalaryComponent,
-    GeneratePayrollComponent
+    GeneratePayrollComponent,
+    GeneralSettingsComponent
   ],
   imports: [
     BrowserModule,

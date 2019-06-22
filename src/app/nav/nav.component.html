@@ -26,7 +26,13 @@
                     <a class="dropdown-item" (click)="viewChanger('payroll')">Generate Payroll</a>
                 </div>
             </a>
-            <a mat-list-item (click)="viewChanger('settings')">Settings</a>
+            <a mat-list-item class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" (click)="viewChanger('general settings')">General Settings</a>
+                    <a class="dropdown-item" (click)="viewChanger('holidays')">Holidays</a>
+                </div>
+            </a>
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
@@ -59,6 +65,9 @@
         </div>
         <div *ngIf="chosenView=='payroll'">
             <app-generate-payroll></app-generate-payroll>
+        </div>
+        <div *ngIf="chosenView=='general settings'">
+            <app-general-settings></app-general-settings>
         </div>
     </mat-sidenav-content>
 </mat-sidenav-container>
