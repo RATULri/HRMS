@@ -23,7 +23,7 @@
                 <div class="dropdown-menu">
                     <a class="dropdown-item" (click)="viewChanger('salary management')">Manage Salary Detail</a>
                     <a class="dropdown-item" (click)="viewChanger('employee salary list')">Employee Salary List</a>
-                    <a class="dropdown-item" (click)="viewChanger('payslip')">Generate Payslip</a>
+                    <a class="dropdown-item" (click)="viewChanger('payroll')">Generate Payroll</a>
                 </div>
             </a>
             <a mat-list-item (click)="viewChanger('settings')">Settings</a>
@@ -53,6 +53,12 @@
         </div>
         <div *ngIf="chosenView=='salary management'">
             <app-salary-management></app-salary-management>
+        </div>
+        <div *ngIf="chosenView=='employee salary list'">
+            <app-salary></app-salary>
+        </div>
+        <div *ngIf="chosenView=='payroll'">
+            <app-generate-payroll></app-generate-payroll>
         </div>
     </mat-sidenav-content>
 </mat-sidenav-container>

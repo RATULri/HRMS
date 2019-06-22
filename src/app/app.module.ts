@@ -17,6 +17,8 @@ import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SalaryManagementComponent } from './salary-management/salary-management.component';
 import { AddDepartmentComponent } from './add-department/add-department.component';
+import { SalaryComponent } from './salary/salary.component';
+import { GeneratePayrollComponent } from './generate-payroll/generate-payroll.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { AddDepartmentComponent } from './add-department/add-department.componen
     EmployeesComponent,
     AddEmployeeComponent,
     SalaryManagementComponent,
-    AddDepartmentComponent
+    AddDepartmentComponent,
+    SalaryComponent,
+    GeneratePayrollComponent
   ],
   imports: [
     BrowserModule,

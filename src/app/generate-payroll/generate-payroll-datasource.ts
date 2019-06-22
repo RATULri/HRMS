@@ -4,27 +4,33 @@ import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 
 // TODO: Replace this with your own data model type
-export interface DepartmentsItem {
+export interface GeneratePayrollItem {
   name: string;
   id: number;
+  grossSalary: string;
+  deduction: string;
+  netSalary: string;
+  employeeType: string;
+  department: string;
 }
 
 // TODO: replace this with real data from your application
-const EXAMPLE_DATA: DepartmentsItem[] = [
-  {id: 1, name: 'Accounts'},
-  {id: 2, name: 'Management'},
-  {id: 3, name: 'Design'},
-  {id: 4, name: 'Copy Write'},
-  {id: 5, name: 'Planning'}
+const EXAMPLE_DATA: GeneratePayrollItem[] = [
+  {id: 1, name: 'Salman', grossSalary: 'a', deduction: '0', netSalary: 'a', employeeType: 'Parmanent', department: 'IT'},
+  {id: 2, name: 'Farhan', grossSalary: 'b', deduction: '0', netSalary: 'b', employeeType: 'Parmanent', department: 'IT'},
+  {id: 3, name: 'Arif', grossSalary: 'c', deduction: '0', netSalary: 'c', employeeType: 'Parmanent', department: 'IT'},
+  {id: 4, name: 'Siam', grossSalary: 'x', deduction: '0', netSalary: 'x', employeeType: 'Parmanent', department: 'IT'},
+  {id: 5, name: 'Ibrahim', grossSalary: 'y', deduction: '0', netSalary: 'y', employeeType: 'Intern', department: 'IT'},
+  {id: 6, name: 'Ratul', grossSalary: 'z', deduction: '0', netSalary: 'z', employeeType: 'Intern', department: 'IT'}
 ];
 
 /**
- * Data source for the Departments view. This class should
+ * Data source for the GeneratePayroll view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class DepartmentsDataSource extends DataSource<DepartmentsItem> {
-  data: DepartmentsItem[] = EXAMPLE_DATA;
+export class GeneratePayrollDataSource extends DataSource<GeneratePayrollItem> {
+  data: GeneratePayrollItem[] = EXAMPLE_DATA;
   paginator: MatPaginator;
   sort: MatSort;
 
@@ -37,7 +43,7 @@ export class DepartmentsDataSource extends DataSource<DepartmentsItem> {
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<DepartmentsItem[]> {
+  connect(): Observable<GeneratePayrollItem[]> {
     // Combine everything that affects the rendered data into one update
     // stream for the data-table to consume.
     const dataMutations = [
@@ -61,7 +67,7 @@ export class DepartmentsDataSource extends DataSource<DepartmentsItem> {
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: DepartmentsItem[]) {
+  private getPagedData(data: GeneratePayrollItem[]) {
     const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
     return data.splice(startIndex, this.paginator.pageSize);
   }
@@ -70,7 +76,7 @@ export class DepartmentsDataSource extends DataSource<DepartmentsItem> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: DepartmentsItem[]) {
+  private getSortedData(data: GeneratePayrollItem[]) {
     if (!this.sort.active || this.sort.direction === '') {
       return data;
     }

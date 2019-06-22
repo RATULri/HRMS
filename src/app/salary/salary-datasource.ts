@@ -4,27 +4,30 @@ import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 
 // TODO: Replace this with your own data model type
-export interface DepartmentsItem {
+export interface SalaryItem {
   name: string;
   id: number;
+  salary: string;
+  employeeType: string;
 }
 
 // TODO: replace this with real data from your application
-const EXAMPLE_DATA: DepartmentsItem[] = [
-  {id: 1, name: 'Accounts'},
-  {id: 2, name: 'Management'},
-  {id: 3, name: 'Design'},
-  {id: 4, name: 'Copy Write'},
-  {id: 5, name: 'Planning'}
+const EXAMPLE_DATA: SalaryItem[] = [
+  {id: 1, name: 'Salman', salary: 'a', employeeType: 'Parmanent'},
+  {id: 2, name: 'Farhan', salary: 'b', employeeType: 'Parmanent'},
+  {id: 3, name: 'Arif', salary: 'c', employeeType: 'Parmanent'},
+  {id: 4, name: 'Siam', salary: 'x', employeeType: 'Parmanent'},
+  {id: 5, name: 'Ibrahim', salary: 'y', employeeType: 'Intern'},
+  {id: 6, name: 'Ratul', salary: 'z', employeeType: 'Intern'}
 ];
 
 /**
- * Data source for the Departments view. This class should
+ * Data source for the Salary view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class DepartmentsDataSource extends DataSource<DepartmentsItem> {
-  data: DepartmentsItem[] = EXAMPLE_DATA;
+export class SalaryDataSource extends DataSource<SalaryItem> {
+  data: SalaryItem[] = EXAMPLE_DATA;
   paginator: MatPaginator;
   sort: MatSort;
 
@@ -37,7 +40,7 @@ export class DepartmentsDataSource extends DataSource<DepartmentsItem> {
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<DepartmentsItem[]> {
+  connect(): Observable<SalaryItem[]> {
     // Combine everything that affects the rendered data into one update
     // stream for the data-table to consume.
     const dataMutations = [
@@ -61,7 +64,7 @@ export class DepartmentsDataSource extends DataSource<DepartmentsItem> {
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: DepartmentsItem[]) {
+  private getPagedData(data: SalaryItem[]) {
     const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
     return data.splice(startIndex, this.paginator.pageSize);
   }
@@ -70,7 +73,7 @@ export class DepartmentsDataSource extends DataSource<DepartmentsItem> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: DepartmentsItem[]) {
+  private getSortedData(data: SalaryItem[]) {
     if (!this.sort.active || this.sort.direction === '') {
       return data;
     }
