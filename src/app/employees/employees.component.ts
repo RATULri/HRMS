@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTable } from '@angular/material';
 import { EmployeesDataSource, EmployeesItem } from './employees-datasource';
-import { NavComponent } from '../nav/nav.component';
 
 @Component({
   selector: 'app-employees',
@@ -16,7 +15,7 @@ export class EmployeesComponent implements AfterViewInit, OnInit {
   dataSource: EmployeesDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name', 'action'];
+  displayedColumns = ['id', 'name', 'department', 'designation', 'action'];
 
   ngOnInit() {
     this.dataSource = new EmployeesDataSource();

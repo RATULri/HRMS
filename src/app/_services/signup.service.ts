@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError,tap } from 'rxjs/operators';
-import { User } from '../_models/user';
+import { Employee } from '../_models/employee';
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-    'Authorization': 'my-auth-token'
-  })
-}
+// const httpOptions = {
+//   headers: new HttpHeaders({
+//     'Content-Type': 'application/json',
+//     'Authorization': 'my-auth-token'
+//   })
+// }
 
 @Injectable({
   providedIn: 'root'
@@ -20,14 +20,10 @@ export class SignupService {
 
   constructor(private http: HttpClient) {}
 
-  // test(): Observable<User>{
-  //   return this.http.get<User>(this.signup_url);
-  // }
-
-  createUser(user: User): Observable<User>{
-    return this.http.post(this.signup_url,user,httpOptions).pipe(
-      tap((newUser: User) => console.log(`Registration Successful.`)),
-      catchError(this.handleError<User>('Registration'))
+  createUser(employee: Employee): Observable<Employee>{
+    return this.http.post(this.signup_url,employee).pipe(
+      tap((newEmployee: Employee) => console.log(`Registration Successful.`)),
+      catchError(this.handleError<Employee>('Registration'))
     );
   }
 

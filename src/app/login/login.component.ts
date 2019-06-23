@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../_models/user';
+import { Employee } from '../_models/employee';
 import { LoginService } from '../_services/login.service';
 import { Router } from '@angular/router';
 
@@ -17,17 +17,19 @@ export class LoginComponent implements OnInit {
 
   login(): void {
 
-    let user = new User();
+    let employee = new Employee();
 
-    user.user_name = (<HTMLInputElement>document.getElementById("user_name")).value;
-    user.password = (<HTMLInputElement>document.getElementById("password")).value;
+    employee.user_name = (<HTMLInputElement>document.getElementById("user_name")).value;
+    employee.password = (<HTMLInputElement>document.getElementById("password")).value;
 
-    this.loginService.login(user).subscribe(data => {
+    this.loginService.login(employee).subscribe(data => {
       if (data[0].status === "FAILED"){
         alert(data[0].message);
+        this.router.navigate(['/login']);
       }
 
       else{
+        localStorage.setItem('token', data[0].token);
         this.router.navigate(['/home']);
         console.log(data);
       }

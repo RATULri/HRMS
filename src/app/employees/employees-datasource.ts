@@ -7,16 +7,18 @@ import { Observable, of as observableOf, merge } from 'rxjs';
 export interface EmployeesItem {
   name: string;
   id: number;
+  department: string;
+  designation: string;
 }
 
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: EmployeesItem[] = [
-  {id: 1, name: 'Salman'},
-  {id: 2, name: 'Farhan'},
-  {id: 3, name: 'Arif'},
-  {id: 4, name: 'Siam'},
-  {id: 5, name: 'Ibrahim'},
-  {id: 6, name: 'Ratul'}
+  {id: 1, name: 'Abdullah Salman Siddique', department:'IT', designation: 'Senior Software Engineer'},
+  {id: 2, name: 'Farhan Ishraque', department:'IT', designation: 'Database Administrator'},
+  {id: 3, name: 'Arif Hossain', department:'IT', designation: 'Trainee Software Engineer'},
+  {id: 4, name: 'Siam Rafsunjani', department:'IT', designation: 'Developer'},
+  {id: 5, name: 'Ibrahim Khalil', department:'IT', designation: 'Intern'},
+  {id: 6, name: 'Md. Rafiul Islam', department:'IT', designation: 'Intern'}
 ];
 
 /**

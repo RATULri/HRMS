@@ -3,8 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SignupComponent } from './signup/signup.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule, MatToolbarModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
@@ -20,11 +19,12 @@ import { AddDepartmentComponent } from './add-department/add-department.componen
 import { SalaryComponent } from './salary/salary.component';
 import { GeneratePayrollComponent } from './generate-payroll/generate-payroll.component';
 import { GeneralSettingsComponent } from './general-settings/general-settings.component';
+import { AuthGuard } from './_guard/auth.guard';
+import { TokenInterceptorService } from './_services/token-interceptor.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SignupComponent,
     LoginComponent,
     NavComponent,
     DashboardComponent,
@@ -57,7 +57,14 @@ import { GeneralSettingsComponent } from './general-settings/general-settings.co
     MatSortModule,
     NgbModule
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

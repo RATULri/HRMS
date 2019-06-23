@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { User } from '../_models/user';
 import { tap, catchError } from 'rxjs/operators';
+import { Employee } from '../_models/employee';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -20,10 +20,10 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  login(user: User): Observable<User>{
-    return this.http.post(this.login_url, user, httpOptions).pipe(
-      tap((loggedUser: User) => console.log(`Login credentials posted successful.`)),
-      catchError(this.handleError<User>('Login'))
+  login(employee: Employee): Observable<Employee>{
+    return this.http.post(this.login_url, employee, httpOptions).pipe(
+      tap((loggedUser: Employee) => console.log(`Login credentials posted successful.`)),
+      catchError(this.handleError<Employee>('Login'))
     );
   }
 

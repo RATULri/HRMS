@@ -1,6 +1,6 @@
-<div class="card-columns">
-    <div class="card m-3">
-        <div class="card-header">
+<div class="card-columns" style="width: 98%">
+    <div class="card m-3 shadow-sm">
+        <div class="card-header" style="background: #B0BEC5">
             <h4 class="text-center">Personal Information</h4>
         </div>
 
@@ -12,10 +12,10 @@
 
             <div class="row">
                 <div class="col-6">
-                    <label for="user_name">Date of Birth</label>
+                    <label for="date_of_birth">Date of Birth</label>
                     <div class="form-group form-inline">
                         <div class="input-group">
-                            <input class="form-control form-control-sm" placeholder="yyyy-mm-dd" name="date_of_birth" ngbDatepicker #dob="ngbDatepicker">
+                            <input class="form-control form-control-sm" placeholder="yyyy-mm-dd" name="date_of_birth" id="date_of_birth" ngbDatepicker #dob="ngbDatepicker">
                             <div class="input-group-append">
                                 <button class="btn btn-outline-secondary calendar" (click)="dob.toggle()"></button>
                             </div>
@@ -24,30 +24,30 @@
                 </div>
 
                 <div class="col-6">
-                    <label for="user_name">Gender</label>
+                    <label for="gender">Gender</label>
                     <form>
-                        <input type="radio" name="gender" value="male"> Male
-                        <input type="radio" name="gender" value="female"> Female
+                        <input type="radio" name="gender" id="gender" value="male"> Male
+                        <input type="radio" name="gender" id="gender" value="female"> Female
                     </form>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="name">Marital Status</label>
+                <label for="marital_status">Marital Status</label>
                 <select class="form-control form-control-sm" id="marital_status">
                         <option value="married">Married</option>
                         <option value="unmarried">Unmarried</option>
-                      </select>
+                </select>
             </div>
 
             <div class="form-group">
-                <label for="name">Father's Name</label>
+                <label for="fathers_name">Father's Name</label>
                 <input type="text" class="form-control form-control-sm rounded-1" id="fathers_name" required name="fathers_name">
             </div>
 
             <div class="form-group">
-                <label for="name">Nationality</label>
-                <select class="form-control form-control-sm" id="marital_status">
+                <label for="nationality">Nationality</label>
+                <select class="form-control form-control-sm" id="nationality">
                         <option value="bangladeshi">Bangladeshi</option>
                         <option value="indian">Indian</option>
                         <option value="pakistani">Pakistani</option>
@@ -62,8 +62,10 @@
         </div>
     </div>
 
-    <div class="card m-3">
-        <div class="card-header">
+
+
+    <div class="card m-3 shadow-sm">
+        <div class="card-header" style="background: #B0BEC5">
             <h4 class="text-center">Contact Information</h4>
         </div>
 
@@ -74,24 +76,42 @@
             </div>
 
             <div class="form-group">
+                <label>Phone number</label>
+                <input type="text" class="form-control form-control-sm rounded-1" id="phone" required name="phone">
+            </div>
+
+            <div class="form-group">
                 <label>Present Address</label>
                 <input type="text" class="form-control form-control-sm rounded-1" id="present_address" required name="present_address">
             </div>
 
             <div class="form-group">
-                <label>Parmanent Address</label>
-                <input type="text" class="form-control form-control-sm rounded-1" id="present_address" required name="present_address">
-            </div>
-
-            <div class="form-group">
-                <label>Phone number</label>
-                <input type="text" class="form-control form-control-sm rounded-1" id="phone" required name="phone">
+                <label>Permanent Address</label>
+                <input type="text" class="form-control form-control-sm rounded-1" id="permanent_address" required name="permanent_address">
             </div>
         </div>
     </div>
 
-    <div class="card m-3">
-        <div class="card-header">
+    <div class="card m-3 shadow-sm">
+        <div class="card-header" style="background: #B0BEC5">
+            <h5 class="text-center">Account Info</h5>
+        </div>
+
+        <div class="card-body">
+            <div class="form-group">
+                <input type="text" class="form-control form-control-sm rounded-1" id="user_name" required name="user_name" placeholder="User Name">
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control form-control-sm rounded-1" id="password" required name="password" placeholder="Password">
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="card m-3 shadow-sm">
+        <div class="card-header" style="background: #B0BEC5">
             <h4 class="text-center">Official Status</h4>
         </div>
 
@@ -102,28 +122,79 @@
             </div>
 
             <div class="form-group">
-                <label>Department</label>
-                <input type="text" class="form-control form-control-sm rounded-1" id="department" required name="department">
+                <label for="marital_status">Department</label>
+                <select class="form-control form-control-sm" id="department">
+                        <option value="1">Accounts</option>
+                        <option value="2">Design</option>
+                        <option value="3">IT</option>
+                </select>
             </div>
 
             <div class="form-group">
-                <label>Designation</label>
-                <input type="text" class="form-control form-control-sm rounded-1" id="designation" required name="designation">
+                <label for="marital_status">Designation</label>
+                <select class="form-control form-control-sm" id="designation">
+                        <option value="1">Senior Executive</option>
+                        <option value="2">Junior Executive</option>
+                        <option value="3">Associate</option>
+                        <option value="4">Intern</option>
+                </select>
             </div>
 
             <label for="joining_date">Joining Date</label>
             <div class="form-group form-inline">
                 <div class="input-group">
-                    <input class="form-control form-control-sm" placeholder="yyyy-mm-dd" name="joining_date" ngbDatepicker #jd="ngbDatepicker">
+                    <input class="form-control form-control-sm" placeholder="yyyy-mm-dd" name="joining_date" id="joining_date" ngbDatepicker #jd="ngbDatepicker">
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary calendar" (click)="jd.toggle()"></button>
                     </div>
                 </div>
+            </div>
+
+            <div>
+                <label for="days">Working Days</label>
+                <div name="days" id="days">
+
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="sun">
+                        <label class="custom-control-label" for="sun"><small>Sunday</small></label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="mon">
+                        <label class="custom-control-label" for="mon"><small>Monday</small></label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="tue">
+                        <label class="custom-control-label" for="tue"><small>Tuesday</small></label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="wed">
+                        <label class="custom-control-label" for="wed"><small>Wednesday</small></label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="thu">
+                        <label class="custom-control-label" for="thu"><small>Thursday</small></label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="fri">
+                        <label class="custom-control-label" for="fri"><small>Friday</small></label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="sat">
+                        <label class="custom-control-label" for="sat"><small>Saturday</small></label>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
 </div>
 
 <div class="container">
-    <button type="button" class="btn btn-success btn-md btn-block mt-3" id="btnSignup" (click)="createUser()">Add Employee</button>
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <button type="button" class="btn btn-success btn-md btn-block mt-3" id="btnSignup" (click)="addEmployee()">Add Employee</button>
+        </div>
+        <div class="col-4"></div>
+    </div>
 </div>
