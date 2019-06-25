@@ -1,4 +1,5 @@
 export class Salary{
+    user_id: string;
     basic_salary: string;
     house_rent_allowance: string;
     medical_allowance: string;

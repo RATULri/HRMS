@@ -1,18 +1,40 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SignupService } from '../_services/signup.service';
 import { Router } from '@angular/router';
 import { Employee } from '../_models/employee';
+import { DepartmentService } from '../_services/department.service';
 
 @Component({
   selector: 'app-add-employee',
   templateUrl: './add-employee.component.html',
   styleUrls: ['./add-employee.component.css']
 })
-export class AddEmployeeComponent {
+export class AddEmployeeComponent implements OnInit {
+  
+  private departments;
+  private department_id;
+  private designations;
 
   private employee;
 
-  constructor(private signupService: SignupService, private router: Router) {}
+  constructor(private signupService: SignupService, private departmentService: DepartmentService, private router: Router) {}
+
+  ngOnInit() {
+    this.getDepartments();
+  }
+
+  getDepartments(){
+    this.departmentService.getDepartment().subscribe(data => {
+      this.departments = data[0].departments;
+    });
+  }
+
+  getDesignations(){
+    this.department_id = (<HTMLInputElement>document.getElementById("select_department")).value;
+    this.departmentService.getDesignation(this.department_id).subscribe(data => {
+      this.designations = data[0].designations;
+    });
+  }
   
   addEmployee(){
     let employee = new Employee;

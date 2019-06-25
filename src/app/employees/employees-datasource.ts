@@ -5,21 +5,21 @@ import { Observable, of as observableOf, merge } from 'rxjs';
 
 // TODO: Replace this with your own data model type
 export interface EmployeesItem {
-  name: string;
   id: number;
+  full_name: string;
   department: string;
   designation: string;
 }
 
 // TODO: replace this with real data from your application
-const EXAMPLE_DATA: EmployeesItem[] = [
-  {id: 1, name: 'Abdullah Salman Siddique', department:'IT', designation: 'Senior Software Engineer'},
-  {id: 2, name: 'Farhan Ishraque', department:'IT', designation: 'Database Administrator'},
-  {id: 3, name: 'Arif Hossain', department:'IT', designation: 'Trainee Software Engineer'},
-  {id: 4, name: 'Siam Rafsunjani', department:'IT', designation: 'Developer'},
-  {id: 5, name: 'Ibrahim Khalil', department:'IT', designation: 'Intern'},
-  {id: 6, name: 'Md. Rafiul Islam', department:'IT', designation: 'Intern'}
-];
+// const EXAMPLE_DATA: EmployeesItem[] = [
+//   {id: 1, full_name: 'Abdullah Salman Siddique', department:'IT', designation: 'Senior Software Engineer'},
+//   {id: 2, full_name: 'Farhan Ishraque', department:'IT', designation: 'Database Administrator'},
+//   {id: 3, full_name: 'Arif Hossain', department:'IT', designation: 'Trainee Software Engineer'},
+//   {id: 4, full_name: 'Siam Rafsunjani', department:'IT', designation: 'Developer'},
+//   {id: 5, full_name: 'Ibrahim Khalil', department:'IT', designation: 'Intern'},
+//   {id: 6, full_name: 'Md. Rafiul Islam', department:'IT', designation: 'Intern'}
+// ];
 
 /**
  * Data source for the Employees view. This class should
@@ -27,12 +27,13 @@ const EXAMPLE_DATA: EmployeesItem[] = [
  * (including sorting, pagination, and filtering).
  */
 export class EmployeesDataSource extends DataSource<EmployeesItem> {
-  data: EmployeesItem[] = EXAMPLE_DATA;
+  data: EmployeesItem[]; // = EXAMPLE_DATA;
   paginator: MatPaginator;
   sort: MatSort;
 
-  constructor() {
+  constructor(employeeData) {
     super();
+    this.data = employeeData;
   }
 
   /**
@@ -81,8 +82,10 @@ export class EmployeesDataSource extends DataSource<EmployeesItem> {
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
-        case 'name': return compare(a.name, b.name, isAsc);
         case 'id': return compare(+a.id, +b.id, isAsc);
+        case 'name': return compare(a.full_name, b.full_name, isAsc);
+        case 'department': return compare(a.department, b.department, isAsc);
+        case 'designation': return compare(a.designation, b.designation, isAsc);
         default: return 0;
       }
     });

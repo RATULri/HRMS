@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTable } from '@angular/material';
 import { EmployeesDataSource, EmployeesItem } from './employees-datasource';
+import { EmployeeService } from '../_services/employee.service';
 
 @Component({
   selector: 'app-employees',
@@ -14,16 +15,25 @@ export class EmployeesComponent implements AfterViewInit, OnInit {
   @ViewChild(MatTable, {static: false}) table: MatTable<EmployeesItem>;
   dataSource: EmployeesDataSource;
 
-  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'name', 'department', 'designation', 'action'];
 
+  constructor(private employeeService: EmployeeService){}
+
   ngOnInit() {
-    this.dataSource = new EmployeesDataSource();
+    this.employeeService.getEmployees().subscribe(data => {
+      this.dataSource = new EmployeesDataSource(data[0].users);
+      
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+      this.table.dataSource = this.dataSource;
+    })
   }
 
   ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-    this.table.dataSource = this.dataSource;
+  }
+
+  deleteEmployee(){
+    let employee_id = (<HTMLInputElement>document.getElementById("btn_delete_employee")).value;
+    console.log(employee_id);
   }
 }

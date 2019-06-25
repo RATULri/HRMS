@@ -1,35 +1,33 @@
 <div class="card m-3 shadow-sm">
-    <div class="card-header" style="background: #B0BEC5">
-        <h4 class="text-center">Manage Salary Details</h4>
+    <div class="card-header" style="background: #263238">
+        <h4 class="text-center" style="color: white">Manage Salary Details</h4>
     </div>
 
     <div class="card-body">
         <div class="d-flex justify-content-center">
             <div class="form-group m-3">
-                <label for="select_department">Select Department</label>
-                <select class="form-control form-control-sm" id="select_department">
-                    <option value="married">Design</option>
-                    <option value="unmarried">Accounts</option>
+                <label for="select_department">Department</label>
+                <select class="form-control form-control-sm" id="select_department" (change)="getDesignations()">
+                    <option>Select Department</option>
+                    <option *ngFor="let department of departments" value={{department.id}}>{{department.department_name}}</option>
                 </select>
             </div>
             <div class="form-group m-3">
-                <label for="select_designation">Select Designation</label>
-                <select class="form-control form-control-sm" id="select_designation">
-                    <option value="married">Senior Executive</option>
-                    <option value="unmarried">Junior Executive</option>
-                    <option value="unmarried">Intern</option>
+                <label for="select_designation">Designation</label>
+                <select class="form-control form-control-sm" id="select_designation" (change)="getEmployees()">
+                    <option>Select Designation</option>
+                    <option *ngFor="let designation of designations" value={{designation.id}}>{{designation.designation}}</option>
                 </select>
             </div>
             <div class="form-group m-3">
-                <label for="select_employee">Select Employee</label>
-                <label for="select_designation">Select Designation</label>
-                <select class="form-control form-control-sm" id="select_employee">
-                    <option value="married">Mr. X</option>
-                    <option value="unmarried">Mr. Y</option>
+                <label for="select_employee">Employee</label>
+                <select class="form-control form-control-sm" id="select_employee" (change)="getSalaryInfo()">
+                    <option>Select Employee</option>
+                    <option *ngFor="let employee of employees" value={{employee.id}}>{{employee.full_name}}</option>
                 </select>
             </div>
         </div>
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center" (click)="showSalary()">
             <button class="btn btn-success btn-sm">Search</button>
         </div>
     </div>
@@ -38,30 +36,22 @@
 
 <div class="card-columns" style="width: 98%;">
     <div class="card m-3 shadow-sm">
-        <div class="card-header" style="background: #B0BEC5">
-            <h4 class="text-center">Basic</h4>
+        <div class="card-header" style="background: #263238">
+            <h4 class="text-center" style="color: white">Basic</h4>
         </div>
 
         <div class="card-body">
-            <!-- <div class="form-group">
-                <label for="designation">Designation</label>
-                <select class="form-control form-control-sm" id="designation">
-                        <option value="intern">Intern</option>
-                        <option value="partTime">Part Time</option>
-                        <option value="parmanent">Parmanent</option>
-                      </select>
-            </div> -->
 
             <div class="form-group">
-                <label for="basic">Basic Salary</label>
+                <label>Basic Salary</label>
                 <input type="text" class="form-control form-control-sm rounded-1" id="basic" required name="basic">
             </div>
         </div>
     </div>
 
     <div class="card m-3 shadow-sm">
-        <div class="card-header" style="background: #B0BEC5">
-            <h4 class="text-center">Deductions</h4>
+        <div class="card-header" style="background: #263238">
+            <h4 class="text-center" style="color: white">Deductions</h4>
         </div>
 
         <div class="card-body">
@@ -83,8 +73,8 @@
     </div>
 
     <div class="card m-3 shadow-sm">
-        <div class="card-header" style="background: #B0BEC5">
-            <h4 class="text-center">Allowances</h4>
+        <div class="card-header" style="background: #263238">
+            <h4 class="text-center" style="color: white">Allowances</h4>
         </div>
 
         <div class="card-body">
@@ -121,27 +111,27 @@
     </div>
 
     <div class="card m-3 shadow-sm">
-        <div class="card-header" style="background: #B0BEC5">
-            <h4 class="text-center">Total Salary Detail</h4>
+        <div class="card-header" style="background: #263238">
+            <h4 class="text-center" style="color: white">Total Salary Detail</h4>
         </div>
 
         <div class="card-body">
             <div class="form-group">
                 <label>Gross Salary</label>
-                <input type="text" class="form-control form-control-sm rounded-1" id="gross_salary" required name="gross_salary">
+                <input type="text" readonly="true" class="form-control form-control-sm rounded-1" id="gross_salary" required name="gross_salary">
             </div>
 
             <div class="form-group">
                 <label>Total Deduction</label>
-                <input type="text" class="form-control form-control-sm rounded-1" id="total_deduction" required name="total_deduction">
+                <input type="text" readonly="true" class="form-control form-control-sm rounded-1" id="total_deduction" required name="total_deduction">
             </div>
 
             <div class="form-group">
                 <label>Net Salary</label>
-                <input type="text" class="form-control form-control-sm rounded-1" id="net_salary" required name="net_salary">
+                <input type="text" readonly="true" class="form-control form-control-sm rounded-1" id="net_salary" required name="net_salary">
             </div>
         </div>
     </div>
 
-    <button type="button" class="btn btn-success btn-md btn-block m-3" id="save_salary_btn" (click)="createUser()">Save</button>
+    <button type="button" class="btn btn-success btn-md btn-block m-3" id="save_salary_btn" (click)="updateSalary()">Update</button>
 </div>

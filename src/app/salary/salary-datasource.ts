@@ -5,20 +5,21 @@ import { Observable, of as observableOf, merge } from 'rxjs';
 
 // TODO: Replace this with your own data model type
 export interface SalaryItem {
-  name: string;
   id: number;
+  full_name: string;
+  department: string;
+  designation: string;
   salary: string;
-  employeeType: string;
 }
 
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: SalaryItem[] = [
-  {id: 1, name: 'Salman', salary: 'a', employeeType: 'Parmanent'},
-  {id: 2, name: 'Farhan', salary: 'b', employeeType: 'Parmanent'},
-  {id: 3, name: 'Arif', salary: 'c', employeeType: 'Parmanent'},
-  {id: 4, name: 'Siam', salary: 'x', employeeType: 'Parmanent'},
-  {id: 5, name: 'Ibrahim', salary: 'y', employeeType: 'Intern'},
-  {id: 6, name: 'Ratul', salary: 'z', employeeType: 'Intern'}
+  {id: 1, full_name: 'Salman', salary: 'a', department: 'IT', designation: 'Senior Software Engineer'},
+  {id: 2, full_name: 'Farhan', salary: 'b', department: 'IT', designation: 'Database Administrator'},
+  {id: 3, full_name: 'Arif', salary: 'c', department: 'IT', designation: 'Trainee Software Engineer'},
+  {id: 4, full_name: 'Siam', salary: 'x', department: 'IT', designation: 'Developer'},
+  {id: 5, full_name: 'Ibrahim', salary: 'y', department: 'IT', designation: 'Intern'},
+  {id: 6, full_name: 'Ratul', salary: 'z', department: 'IT', designation: 'Intern'}
 ];
 
 /**
@@ -27,12 +28,14 @@ const EXAMPLE_DATA: SalaryItem[] = [
  * (including sorting, pagination, and filtering).
  */
 export class SalaryDataSource extends DataSource<SalaryItem> {
-  data: SalaryItem[] = EXAMPLE_DATA;
+  data: SalaryItem[]; //= EXAMPLE_DATA;
   paginator: MatPaginator;
   sort: MatSort;
 
-  constructor() {
+  constructor(allSalary) {
     super();
+    this.data = allSalary;
+    console.log(this.data);
   }
 
   /**
@@ -81,8 +84,11 @@ export class SalaryDataSource extends DataSource<SalaryItem> {
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
-        case 'name': return compare(a.name, b.name, isAsc);
         case 'id': return compare(+a.id, +b.id, isAsc);
+        case 'name': return compare(a.full_name, b.full_name, isAsc);
+        case 'department': return compare(a.department, b.department, isAsc);
+        case 'designation': return compare(a.designation, b.designation, isAsc);
+        case 'salary': return compare(a.salary, b.salary, isAsc);
         default: return 0;
       }
     });

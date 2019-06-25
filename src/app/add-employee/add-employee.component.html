@@ -1,7 +1,7 @@
 <div class="card-columns" style="width: 98%">
     <div class="card m-3 shadow-sm">
-        <div class="card-header" style="background: #B0BEC5">
-            <h4 class="text-center">Personal Information</h4>
+        <div class="card-header" style="background: #263238">
+            <h4 class="text-center" style="color: white">Personal Information</h4>
         </div>
 
         <div class="card-body">
@@ -65,8 +65,8 @@
 
 
     <div class="card m-3 shadow-sm">
-        <div class="card-header" style="background: #B0BEC5">
-            <h4 class="text-center">Contact Information</h4>
+        <div class="card-header" style="background: #263238">
+            <h4 class="text-center" style="color: white">Contact Information</h4>
         </div>
 
         <div class="card-body">
@@ -93,8 +93,8 @@
     </div>
 
     <div class="card m-3 shadow-sm">
-        <div class="card-header" style="background: #B0BEC5">
-            <h5 class="text-center">Account Info</h5>
+        <div class="card-header" style="background: #263238">
+            <h5 class="text-center" style="color: white">Account Info</h5>
         </div>
 
         <div class="card-body">
@@ -111,8 +111,8 @@
 
 
     <div class="card m-3 shadow-sm">
-        <div class="card-header" style="background: #B0BEC5">
-            <h4 class="text-center">Official Status</h4>
+        <div class="card-header" style="background: #263238">
+            <h4 class="text-center" style="color: white">Official Status</h4>
         </div>
 
         <div class="card-body">
@@ -122,21 +122,18 @@
             </div>
 
             <div class="form-group">
-                <label for="marital_status">Department</label>
-                <select class="form-control form-control-sm" id="department">
-                        <option value="1">Accounts</option>
-                        <option value="2">Design</option>
-                        <option value="3">IT</option>
+                <label for="select_department">Department</label>
+                <select class="form-control form-control-sm" id="select_department" (change)="getDesignations()">
+                    <option>Select Department</option>
+                    <option *ngFor="let department of departments" value={{department.id}}>{{department.department_name}}</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="marital_status">Designation</label>
-                <select class="form-control form-control-sm" id="designation">
-                        <option value="1">Senior Executive</option>
-                        <option value="2">Junior Executive</option>
-                        <option value="3">Associate</option>
-                        <option value="4">Intern</option>
+                <label for="select_designation">Designation</label>
+                <select class="form-control form-control-sm" id="select_designation" (change)="getEmployees()">
+                    <option>Select Designation</option>
+                    <option *ngFor="let designation of designations" value={{designation.id}}>{{designation.designation}}</option>
                 </select>
             </div>
 
