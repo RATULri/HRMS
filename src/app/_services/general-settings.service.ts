@@ -17,8 +17,8 @@ const httpOptions = {
 })
 export class GeneralSettingsService {
 
-  private working_days_url: string = "";
-  private company_info_url: string = "";
+  private working_days_url: string = "http://192.168.0.158:8000/api/working-day";
+  private company_info_url: string = "http://192.168.0.158:8000/api/company";
 
   constructor(private http:HttpClient) { }
 
