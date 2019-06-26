@@ -3,6 +3,9 @@ import { SignupService } from '../_services/signup.service';
 import { Router } from '@angular/router';
 import { Employee } from '../_models/employee';
 import { DepartmentService } from '../_services/department.service';
+import { FileUploader } from 'ng2-file-upload';
+
+const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 
 @Component({
   selector: 'app-add-employee',
@@ -10,7 +13,11 @@ import { DepartmentService } from '../_services/department.service';
   styleUrls: ['./add-employee.component.css']
 })
 export class AddEmployeeComponent implements OnInit {
-  
+
+  public uploader:FileUploader = new FileUploader({url: URL});
+  public hasBaseDropZoneOver:boolean = false;
+  public hasAnotherDropZoneOver:boolean = false;
+
   private departments;
   private department_id;
   private designations;
@@ -72,5 +79,14 @@ export class AddEmployeeComponent implements OnInit {
         alert("Registration complete");
       }
     })
+  }
+
+
+  public fileOverBase(e:any):void {
+    this.hasBaseDropZoneOver = e;
+  }
+ 
+  public fileOverAnother(e:any):void {
+    this.hasAnotherDropZoneOver = e;
   }
 }

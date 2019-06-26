@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCheckboxModule, MatToolbarModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatToolbarModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatChipInput, MatInputModule } from '@angular/material';
 import { LayoutModule } from '@angular/cdk/layout';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavComponent } from './nav/nav.component';
@@ -21,6 +21,7 @@ import { GeneratePayrollComponent } from './generate-payroll/generate-payroll.co
 import { GeneralSettingsComponent } from './general-settings/general-settings.component';
 import { AuthGuard } from './_guard/auth.guard';
 import { TokenInterceptorService } from './_services/token-interceptor.service';
+import { FileUploadModule } from "ng2-file-upload";
 
 @NgModule({
   declarations: [
@@ -55,7 +56,10 @@ import { TokenInterceptorService } from './_services/token-interceptor.service';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    NgbModule
+    MatFormFieldModule,
+    MatInputModule,
+    NgbModule,
+    FileUploadModule
   ],
   providers: [
     AuthGuard,

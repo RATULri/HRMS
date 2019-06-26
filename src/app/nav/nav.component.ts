@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class NavComponent {
 
-  private chosenView = 'general settings';
+  private chosenView = 'add employee';
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
