@@ -5,7 +5,7 @@ import { Employee } from '../_models/employee';
 import { DepartmentService } from '../_services/department.service';
 import { FileUploader } from 'ng2-file-upload';
 
-const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
+const URL = "http://192.168.0.158:8000/api/file-upload";
 
 @Component({
   selector: 'app-add-employee',
@@ -13,8 +13,14 @@ const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
   styleUrls: ['./add-employee.component.css']
 })
 export class AddEmployeeComponent implements OnInit {
-
-  public uploader:FileUploader = new FileUploader({url: URL});
+  public uploader:FileUploader = new FileUploader({
+    url: URL,
+    isHTML5: true,
+    method: 'POST',
+    authTokenHeader:  'authorization',
+    authToken: 'Bearer '+ localStorage.getItem("token"),
+    itemAlias: 'file'
+  });
   public hasBaseDropZoneOver:boolean = false;
   public hasAnotherDropZoneOver:boolean = false;
 
@@ -28,6 +34,7 @@ export class AddEmployeeComponent implements OnInit {
 
   ngOnInit() {
     this.getDepartments();
+    this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; }; 
   }
 
   getDepartments(){
@@ -35,6 +42,8 @@ export class AddEmployeeComponent implements OnInit {
       this.departments = data[0].departments;
     });
   }
+
+
 
   getDesignations(){
     this.department_id = (<HTMLInputElement>document.getElementById("select_department")).value;

@@ -22,6 +22,10 @@ import { GeneralSettingsComponent } from './general-settings/general-settings.co
 import { AuthGuard } from './_guard/auth.guard';
 import { TokenInterceptorService } from './_services/token-interceptor.service';
 import { FileUploadModule } from "ng2-file-upload";
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { FormsModule } from '@angular/forms';
+import { FlatpickrModule } from 'angularx-flatpickr'; 
 
 @NgModule({
   declarations: [
@@ -59,7 +63,13 @@ import { FileUploadModule } from "ng2-file-upload";
     MatFormFieldModule,
     MatInputModule,
     NgbModule,
-    FileUploadModule
+    FileUploadModule,
+    FormsModule,
+    FlatpickrModule.forRoot(),
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    })
   ],
   providers: [
     AuthGuard,
