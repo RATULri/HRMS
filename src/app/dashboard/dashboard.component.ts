@@ -102,7 +102,7 @@ export class DashboardComponent {
     }
   ];
 
-  activeDayIsOpen: boolean = true;
+  activeDayIsOpen = true;
 
   constructor(private modal: NgbModal) {}
 

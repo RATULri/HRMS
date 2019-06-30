@@ -17,8 +17,8 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: NavComponent,
-    canActivate: [AuthGuard]
+    component: NavComponent
+    // canActivate: [AuthGuard]
   },
   {
     path: 'dashboard',

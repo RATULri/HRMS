@@ -20,15 +20,18 @@ export class NavComponent {
       map(result => result.matches)
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private authenticationService: AuthenticationServiceService, private router: Router) {}
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private authenticationService: AuthenticationServiceService,
+    private router: Router) {}
 
   viewChanger(view): void {
     this.chosenView = view;
   }
 
-  logout(){
+  logout() {
     this.authenticationService.logout().subscribe(data => {
-      if(data[0].status === "OK"){
+      if (data[0].status === 'OK') {
         localStorage.removeItem('token');
         this.router.navigate(['/login']);
       }
