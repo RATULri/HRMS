@@ -35,7 +35,6 @@ export class SalaryDataSource extends DataSource<SalaryItem> {
   constructor(allSalary) {
     super();
     this.data = allSalary;
-    console.log(this.data);
   }
 
   /**

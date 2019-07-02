@@ -69,8 +69,8 @@ export class AddEmployeeComponent implements OnInit {
     employee.permanent_address = (<HTMLInputElement>document.getElementById("permanent_address")).value;
     
     employee.employee_id = (<HTMLInputElement>document.getElementById("employee_id")).value;
-    employee.department_id = (<HTMLInputElement>document.getElementById("department")).value;
-    employee.designation_id = (<HTMLInputElement>document.getElementById("designation")).value;
+    employee.department_id = (<HTMLInputElement>document.getElementById("select_department")).value;
+    employee.designation_id = (<HTMLInputElement>document.getElementById("select_designation")).value;
     employee.joining_date = (<HTMLInputElement>document.getElementById("joining_date")).value;
     //employee.working_days = (<HTMLInputElement>document.getElementById("working_days")).value;
     

@@ -13,4 +13,8 @@ export class EmployeeService {
   getEmployees(): Observable<EmployeesItem>{
     return this.http.get<EmployeesItem>("http://192.168.0.158:8000/api/users");
   }
+
+  deleteEmployee(id){
+    return this.http.get("http://192.168.0.158:8000/api/delete/user/" + id);
+  }
 }
