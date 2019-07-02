@@ -25,7 +25,10 @@ import { FileUploadModule } from "ng2-file-upload";
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { FormsModule } from '@angular/forms';
-import { FlatpickrModule } from 'angularx-flatpickr'; 
+import { FlatpickrModule } from 'angularx-flatpickr';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { LeaveManagementComponent } from './leave-management/leave-management.component';
+import { LeaveComponent } from './leave/leave.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,9 @@ import { FlatpickrModule } from 'angularx-flatpickr';
     AddDepartmentComponent,
     SalaryComponent,
     GeneratePayrollComponent,
-    GeneralSettingsComponent
+    GeneralSettingsComponent,
+    LeaveManagementComponent,
+    LeaveComponent
   ],
   imports: [
     BrowserModule,
@@ -62,6 +67,7 @@ import { FlatpickrModule } from 'angularx-flatpickr';
     MatSortModule,
     MatFormFieldModule,
     MatInputModule,
+    AngularFontAwesomeModule,
     NgbModule,
     FileUploadModule,
     FormsModule,

@@ -86,7 +86,8 @@ export class DashboardComponent {
       end: addDays(endOfMonth(new Date()), 3),
       title: 'A long event that spans 2 months',
       color: colors.blue,
-      allDay: true
+      allDay: true,
+      actions: this.actions
     },
     {
       start: addHours(startOfDay(new Date()), 2),
@@ -172,16 +173,6 @@ export class DashboardComponent {
     this.activeDayIsOpen = false;
   }
 }
-
-
-
-
-
-
-
-
-
-
 
 
 

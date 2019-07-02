@@ -19,6 +19,13 @@
             </a>
             <a mat-list-item (click)="viewChanger('attendance')">Attendance</a>
             <a mat-list-item class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Leave</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" (click)="viewChanger('leave')">Leave Application</a>
+                    <a class="dropdown-item" (click)="viewChanger('leave management')">Leave Management</a>
+                </div>
+            </a>
+            <a mat-list-item class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Payroll Management</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" (click)="viewChanger('salary management')">Manage Salary Detail</a>
@@ -60,6 +67,12 @@
         </div>
         <div *ngIf="chosenView=='add employee'">
             <app-add-employee></app-add-employee>
+        </div>
+        <div *ngIf="chosenView=='leave'">
+            <app-leave></app-leave>
+        </div>
+        <div *ngIf="chosenView=='leave management'">
+            <app-leave-management></app-leave-management>
         </div>
         <div *ngIf="chosenView=='salary management'">
             <app-salary-management></app-salary-management>

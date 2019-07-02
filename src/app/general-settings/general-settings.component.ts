@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { GeneralSettingsService } from '../_services/general-settings.service';
 import { Company } from '../_models/company';
 import { WorkingDays } from '../_models/workingDays';
-import { stringify } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-general-settings',
@@ -17,9 +16,24 @@ export class GeneralSettingsComponent implements OnInit {
   constructor(private generalSettingsService: GeneralSettingsService) { }
 
   ngOnInit() {
+    this.generalSettingsService.getCompanyInfo().subscribe(data => {
+      this.showCompanyInfo(data[0]);
+    })
   }
 
-  updateCompanyInfo(){
+  showCompanyInfo(info){
+    (<HTMLInputElement>document.getElementById("company_name")).value = info.name;
+    (<HTMLInputElement>document.getElementById("email")).value = info.email;
+    (<HTMLInputElement>document.getElementById("address")).value = info.address;
+    (<HTMLInputElement>document.getElementById("country")).value = info.country;
+    (<HTMLInputElement>document.getElementById("phone")).value = info.phone;
+    (<HTMLInputElement>document.getElementById("mobile")).value = info.mobile;
+    (<HTMLInputElement>document.getElementById("website")).value = info.website;
+  }
+
+
+
+  createNewCompany(){
     let workingDays = new WorkingDays;
     let company = new Company;
     
@@ -53,5 +67,8 @@ export class GeneralSettingsComponent implements OnInit {
         })
       }
     })
+  }
+
+  updateCompanyInfo(){
   }
 }

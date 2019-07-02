@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
 
     let employee = new Employee();
 
-    employee.user_name = (<HTMLInputElement>document.getElementById("user_name")).value;
+    employee.email = (<HTMLInputElement>document.getElementById("email")).value;
     employee.password = (<HTMLInputElement>document.getElementById("password")).value;
 
     this.loginService.login(employee).subscribe(data => {

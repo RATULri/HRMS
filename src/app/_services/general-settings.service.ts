@@ -17,10 +17,15 @@ const httpOptions = {
 })
 export class GeneralSettingsService {
 
+  private get_company_info_url = "http://192.168.0.158:8000/api/company/3";
   private working_days_url: string = "http://192.168.0.158:8000/api/working-day";
   private company_info_url: string = "http://192.168.0.158:8000/api/company";
 
   constructor(private http:HttpClient) { }
+
+  getCompanyInfo(){
+    return this.http.get(this.get_company_info_url);
+  }
 
   updateWorkingDays(workingDays: WorkingDays): Observable<WorkingDays>{
     return this.http.post(this.working_days_url, workingDays, httpOptions).pipe(

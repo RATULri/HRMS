@@ -131,7 +131,7 @@
 
             <div class="form-group">
                 <label for="select_designation">Designation</label>
-                <select class="form-control form-control-sm" id="select_designation" (change)="getEmployees()">
+                <select class="form-control form-control-sm" id="select_designation">
                     <option>Select Designation</option>
                     <option *ngFor="let designation of designations" value={{designation.id}}>{{designation.designation}}</option>
                 </select>
