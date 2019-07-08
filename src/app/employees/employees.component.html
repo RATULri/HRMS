@@ -30,10 +30,20 @@
             <td mat-cell *matCellDef="let row">{{row.designation}}</td>
         </ng-container>
 
+        <ng-container matColumnDef="casual_leave">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Casual Leave</th>
+            <td mat-cell *matCellDef="let row">{{row.casual_leave}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="sick_leave">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Sick Leave</th>
+            <td mat-cell *matCellDef="let row">{{row.sick_leave}}</td>
+        </ng-container>
+
         <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef>Action</th>
             <td mat-cell *matCellDef="let row">
-                <button class="btn btn-info btn-sm mr-1" id="btn_edit_employee" (click)="editEmployee()">Edit</button>
+                <button class="btn btn-info btn-sm mr-1" id="btn_edit_employee" (click)="editEmployee(row.id)">Edit</button>
                 <button class="btn btn-danger btn-sm" id="btn_delete_employee" (click)="deleteEmployee(row.id)">Delete</button>
             </td>
         </ng-container>

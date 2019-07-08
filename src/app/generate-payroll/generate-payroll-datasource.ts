@@ -7,21 +7,23 @@ import { Observable, of as observableOf, merge } from 'rxjs';
 export interface GeneratePayrollItem {
   name: string;
   id: number;
-  grossSalary: string;
-  deduction: string;
-  netSalary: string;
+  fixedSalary: string;
+  variableSalary: string;
+  overtime: string;
+  nightAllowence: string;
+  totalSalary: string;
   employeeType: string;
   department: string;
 }
 
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: GeneratePayrollItem[] = [
-  {id: 1, name: 'Salman', grossSalary: 'a', deduction: '0', netSalary: 'a', employeeType: 'Parmanent', department: 'IT'},
-  {id: 2, name: 'Farhan', grossSalary: 'b', deduction: '0', netSalary: 'b', employeeType: 'Parmanent', department: 'IT'},
-  {id: 3, name: 'Arif', grossSalary: 'c', deduction: '0', netSalary: 'c', employeeType: 'Parmanent', department: 'IT'},
-  {id: 4, name: 'Siam', grossSalary: 'x', deduction: '0', netSalary: 'x', employeeType: 'Parmanent', department: 'IT'},
-  {id: 5, name: 'Ibrahim', grossSalary: 'y', deduction: '0', netSalary: 'y', employeeType: 'Intern', department: 'IT'},
-  {id: 6, name: 'Ratul', grossSalary: 'z', deduction: '0', netSalary: 'z', employeeType: 'Intern', department: 'IT'}
+  {id: 1, name: 'Salman', fixedSalary: '12,000', variableSalary: '1,000', overtime: '900', nightAllowence: '1,000', totalSalary: '14,900', employeeType: 'Parmanent', department: 'Management'},
+  {id: 2, name: 'Farhan', fixedSalary: '15,000', variableSalary: '2,000', overtime: '0', nightAllowence: '0', totalSalary: '17,000', employeeType: 'Parmanent', department: 'Sewing'},
+  {id: 3, name: 'Arif', fixedSalary: '8,200', variableSalary: '1,200', overtime: '500',nightAllowence: '1,000', totalSalary: '10,900', employeeType: 'Parmanent', department: 'Sewing'},
+  {id: 4, name: 'Siam', fixedSalary: '5,400', variableSalary: '-400', overtime: '0',nightAllowence: '300', totalSalary: '5,300', employeeType: 'Parmanent', department: 'Cutting'},
+  {id: 5, name: 'Ibrahim', fixedSalary: '5,000', variableSalary: '400', overtime: '0', nightAllowence: '0', totalSalary: '5,400', employeeType: 'Intern', department: 'Finishing'},
+  {id: 6, name: 'Ratul', fixedSalary: '8,000', variableSalary: '-1,000', overtime: '0',nightAllowence: '1,000', totalSalary: '8,000', employeeType: 'Intern', department: 'Quality Control'}
 ];
 
 /**

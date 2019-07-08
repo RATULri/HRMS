@@ -9,7 +9,7 @@ import { LeaveApplication } from '../_models/leaveApplication';
 })
 export class LeaveComponent implements OnInit {
 
-  private leaveCategories;
+  public leaveCategories;
 
   constructor(private leaveService: LeaveService) { }
 

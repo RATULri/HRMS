@@ -15,7 +15,7 @@ export class LeaveManagementComponent implements AfterViewInit, OnInit {
   dataSource: LeaveManagementDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name', 'department', 'designation', 'category','start_date', 'end_date', 'status', 'action'];
+  displayedColumns = ['id', 'name', 'department', 'designation', 'category','start_date', 'end_date', 'working_days', 'leave_available', 'status', 'action'];
 
   constructor (private leaveService: LeaveService){}
 

@@ -14,7 +14,7 @@ export class GeneratePayrollComponent implements AfterViewInit, OnInit {
   dataSource: GeneratePayrollDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name', 'grossSalary', 'deduction', 'netSalary', 'employeeType', 'department', 'action'];
+  displayedColumns = ['id', 'name', 'fixedSalary', 'variableSalary', 'overtime','nightAllowence', 'totalSalary' ,'employeeType', 'department', 'action'];
 
   ngOnInit() {
     this.dataSource = new GeneratePayrollDataSource();

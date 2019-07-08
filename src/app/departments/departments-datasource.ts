@@ -11,11 +11,10 @@ export interface DepartmentsItem {
 
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: DepartmentsItem[] = [
-  {id: 1, name: 'Accounts'},
-  {id: 2, name: 'Management'},
-  {id: 3, name: 'Design'},
-  {id: 4, name: 'Copy Write'},
-  {id: 5, name: 'Planning'}
+  {id: 1, name: 'Sewing'},
+  {id: 2, name: 'Cutting'},
+  {id: 3, name: 'Finishing'},
+  {id: 4, name: 'Quality Control'}
 ];
 
 /**

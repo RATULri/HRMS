@@ -3,46 +3,48 @@
         <mat-toolbar style="color:white">Menu</mat-toolbar>
         <mat-nav-list>
             <a mat-list-item (click)="viewChanger('dashboard')">Dashboard</a>
-            <a mat-list-item class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Departments</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" (click)="viewChanger('departments')">Department List</a>
-                    <a class="dropdown-item" (click)="viewChanger('add department')">Add Department</a>
-                </div>
-            </a>
-            <a mat-list-item class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Employees</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" (click)="viewChanger('employee list')">Employee List</a>
-                    <a class="dropdown-item" (click)="viewChanger('add employee')">Add Employee</a>
-                </div>
-            </a>
-            <a mat-list-item (click)="viewChanger('attendance')">Attendance</a>
-            <a mat-list-item class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Leave</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" (click)="viewChanger('leave')">Leave Application</a>
-                    <a class="dropdown-item" (click)="viewChanger('leave management')">Leave Management</a>
-                </div>
-            </a>
-            <a mat-list-item class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Payroll Management</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" (click)="viewChanger('salary management')">Manage Salary Detail</a>
-                    <a class="dropdown-item" (click)="viewChanger('employee salary list')">Employee Salary List</a>
-                    <a class="dropdown-item" (click)="viewChanger('payroll')">Generate Payroll</a>
-                </div>
-            </a>
-            <a mat-list-item class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" (click)="viewChanger('general settings')">General Settings</a>
-                    <a class="dropdown-item" (click)="viewChanger('holidays')">Holidays</a>
-                </div>
-            </a>
+
+            <a style="color: white" mat-list-item data-toggle="collapse" href="#departmentMenu">Departments</a>
+            <div class="collapse multi-collapse ml-4" id="departmentMenu">
+                <a (click)="viewChanger('departments')">Department List</a><br>
+                <a (click)="viewChanger('add department')">Add Department</a>
+            </div>
+
+            <a style="color: white" mat-list-item data-toggle="collapse" href="#employeesMenu">Employees</a>
+            <div class="collapse multi-collapse ml-4" id="employeesMenu">
+                <a (click)="viewChanger('employee list')">Employee List</a><br>
+                <a (click)="viewChanger('add employee')">Add Employee</a>
+            </div>
+
+            <a style="color: white" mat-list-item data-toggle="collapse" href="#attendanceMenu">Attendance</a>
+            <div class="collapse multi-collapse ml-4" id="attendanceMenu">
+                <a (click)="viewChanger('today')">Today's Attendace</a><br>
+                <a (click)="viewChanger('report')">Attendace Report</a>
+            </div>
+
+
+            <a style="color: white" mat-list-item data-toggle="collapse" href="#leaveMenu">Leave</a>
+            <div class="collapse multi-collapse ml-4" id="leaveMenu">
+                <a (click)="viewChanger('leave')">Leave Application</a><br>
+                <a (click)="viewChanger('leave management')">Leave Management</a>
+            </div>
+
+            <a style="color: white" mat-list-item data-toggle="collapse" href="#payrollMenu">Payroll Management</a>
+            <div class="collapse multi-collapse ml-4" id="payrollMenu">
+                <a (click)="viewChanger('salary management')">Manage Salary Detail</a><br>
+                <a (click)="viewChanger('employee salary list')">Employee Salary List</a><br>
+                <a (click)="viewChanger('payroll')">Generate Payroll</a>
+            </div>
+
+            <a style="color: white" mat-list-item data-toggle="collapse" href="#settings">Settings</a>
+            <div class="collapse multi-collapse ml-4" id="settings">
+                <a (click)="viewChanger('general settings')">General Settings</a><br>
+                <a (click)="viewChanger('holidays')">Holidays</a>
+            </div>
+
             <hr style="background-color: white">
             <hr style="background-color: white">
-            <a mat-list-item (click)="logout()" style="color: white">Logout</a>
+            <a style="color: white" mat-list-item (click)="logout()" style="color: white">Logout</a>
             <hr style="background-color: white">
         </mat-nav-list>
     </mat-sidenav>
@@ -67,6 +69,12 @@
         </div>
         <div *ngIf="chosenView=='add employee'">
             <app-add-employee></app-add-employee>
+        </div>
+        <div *ngIf="chosenView=='today'">
+            <app-todays-attendance></app-todays-attendance>
+        </div>
+        <div *ngIf="chosenView=='report'">
+            <app-attendance-report></app-attendance-report>
         </div>
         <div *ngIf="chosenView=='leave'">
             <app-leave></app-leave>

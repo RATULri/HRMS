@@ -29,6 +29,11 @@ import { FlatpickrModule } from 'angularx-flatpickr';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { LeaveManagementComponent } from './leave-management/leave-management.component';
 import { LeaveComponent } from './leave/leave.component';
+import { TodaysAttendanceComponent } from './todays-attendance/todays-attendance.component';
+// import { ChartsModule, WavesModule, MDBBootstrapModule  } from 'angular-bootstrap-md';
+
+import { ChartsModule } from 'ng2-charts';
+import { AttendanceReportComponent } from './attendance-report/attendance-report.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +50,9 @@ import { LeaveComponent } from './leave/leave.component';
     GeneratePayrollComponent,
     GeneralSettingsComponent,
     LeaveManagementComponent,
-    LeaveComponent
+    LeaveComponent,
+    TodaysAttendanceComponent,
+    AttendanceReportComponent
   ],
   imports: [
     BrowserModule,
@@ -71,6 +78,7 @@ import { LeaveComponent } from './leave/leave.component';
     NgbModule,
     FileUploadModule,
     FormsModule,
+    ChartsModule,
     FlatpickrModule.forRoot(),
     CalendarModule.forRoot({
       provide: DateAdapter,

@@ -21,3 +21,7 @@ body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+.padding-left-4 {
+    padding-left: 4% !important;
+}

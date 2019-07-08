@@ -10,9 +10,9 @@ import { DepartmentService } from '../_services/department.service';
 })
 export class SalaryManagementComponent implements OnInit {
 
-  private departments;
-  private designations;
-  private employees;
+  public departments;
+  public designations;
+  public employees;
 
   private department_id;
   private designation_id;

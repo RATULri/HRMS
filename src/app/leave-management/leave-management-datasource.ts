@@ -12,6 +12,8 @@ export interface LeaveManagementItem {
   category: string;
   start_date: string;
   end_date: string;
+  leave_length: string;
+  leave_available: string;
   status: string;
 }
 

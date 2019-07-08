@@ -9,6 +9,8 @@ export interface EmployeesItem {
   full_name: string;
   department: string;
   designation: string;
+  casual_leave: string;
+  sick_leave: string;
 }
 
 // TODO: replace this with real data from your application

@@ -1,31 +1,31 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild, EventEmitter, Output } from '@angular/core';
 import { MatPaginator, MatSort, MatTable } from '@angular/material';
 import { EmployeesDataSource, EmployeesItem } from './employees-datasource';
 import { EmployeeService } from '../_services/employee.service';
 import { NavComponent } from '../nav/nav.component';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { DataService } from '../_services/data.service';
 
 @Component({
   selector: 'app-employees',
   templateUrl: './employees.component.html',
   styleUrls: ['./employees.component.css']
 })
-export class EmployeesComponent implements AfterViewInit, OnInit {
+export class EmployeesComponent implements OnInit {
 
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) sort: MatSort;
   @ViewChild(MatTable, {static: false}) table: MatTable<EmployeesItem>;
   dataSource: EmployeesDataSource;
-  nav: NavComponent;
+  nav: String;
 
-  displayedColumns = ['id', 'name', 'department', 'designation', 'action'];
+  displayedColumns = ['id', 'name', 'department', 'designation', 'casual_leave', 'sick_leave','action'];
 
-  constructor(private employeeService: EmployeeService){}
+  constructor(private employeeService: EmployeeService, private data: DataService){}
+
 
   ngOnInit() {
     this.load();
-  }
-
-  ngAfterViewInit() {
   }
 
   deleteEmployee(employee_id){
@@ -36,8 +36,9 @@ export class EmployeesComponent implements AfterViewInit, OnInit {
     })
   }
 
-  editEmployee(){
-    this.nav = new NavComponent();
+  editEmployee(employee_id){
+    this.data.changeMessage("add employee");
+    this.data.employee_id = employee_id;
   }
 
   load(){

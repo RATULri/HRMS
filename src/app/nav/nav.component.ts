@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output  } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AuthenticationServiceService } from '../_services/authentication-service.service';
 import { Router } from '@angular/router';
-import { ConnectedPositionStrategy } from '@angular/cdk/overlay';
+import { DataService } from '../_services/data.service';
 
 @Component({
   selector: 'app-nav',
@@ -13,16 +13,17 @@ import { ConnectedPositionStrategy } from '@angular/cdk/overlay';
 })
 export class NavComponent {
 
-  private chosenView = 'employee list';
-  // private chosenView = 'dashboard';
+  public chosenView;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset).pipe(map(result => result.matches));
 
-  constructor()
-  constructor(view)
-  constructor(private breakpointObserver?: BreakpointObserver, private authenticationService?: AuthenticationServiceService, private router?: Router) { }
+  constructor(private breakpointObserver: BreakpointObserver, private authenticationService: AuthenticationServiceService, private router: Router, private data: DataService) {}
 
-  viewChanger(view): void {
+  ngOnInit(){
+    this.data.currentMessage.subscribe(message => this.chosenView = message);
+  }
+
+  public viewChanger(view): void {
     this.chosenView = view;
   }
 
