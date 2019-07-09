@@ -3,4 +3,5 @@ export class LeaveApplication{
     start_date: string;
     end_date: string;
     leave_description: string;
+    decision: string;
 }

@@ -2,13 +2,14 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTable } from '@angular/material';
 import { LeaveManagementDataSource, LeaveManagementItem } from './leave-management-datasource';
 import { LeaveService } from '../_services/leave.service';
+import { LeaveApplication } from '../_models/leaveApplication';
 
 @Component({
   selector: 'app-leave-management',
   templateUrl: './leave-management.component.html',
   styleUrls: ['./leave-management.component.css']
 })
-export class LeaveManagementComponent implements AfterViewInit, OnInit {
+export class LeaveManagementComponent implements OnInit {
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) sort: MatSort;
   @ViewChild(MatTable, {static: false}) table: MatTable<LeaveManagementItem>;
@@ -20,6 +21,10 @@ export class LeaveManagementComponent implements AfterViewInit, OnInit {
   constructor (private leaveService: LeaveService){}
 
   ngOnInit() {
+    this.load();
+  }
+
+  load(){
     this.leaveService.getLeaves().subscribe(data => {
       this.dataSource = new LeaveManagementDataSource(data[0].leaves);
 
@@ -29,6 +34,26 @@ export class LeaveManagementComponent implements AfterViewInit, OnInit {
     })
   }
 
-  ngAfterViewInit() {
+  leaveApplication(id, action){
+    let leave = new LeaveApplication;
+
+    leave.decision = action.toString();
+    
+    this.leaveService.leaveAction(id, leave).subscribe(data => {
+
+      if(data[0].status === "FAILED"){
+        alert(data[0].message);
+      }
+
+      console.log(data);
+      this.load();
+    })
+  }
+
+  cancelLeave(id){
+    this.leaveService.cancelLeave(id).subscribe(data => {
+      console.log(data);
+      this.load();
+    })
   }
 }

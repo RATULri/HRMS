@@ -1,7 +1,7 @@
 <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #drawer class="sidenav bg-dark" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false" style="color: white">
-        <mat-toolbar style="color:white">Menu</mat-toolbar>
-        <mat-nav-list>
+        <mat-toolbar style="color:white;">Menu</mat-toolbar>
+        <mat-nav-list style="cursor: pointer">
             <a mat-list-item (click)="viewChanger('dashboard')">Dashboard</a>
 
             <a style="color: white" mat-list-item data-toggle="collapse" href="#departmentMenu">Departments</a>

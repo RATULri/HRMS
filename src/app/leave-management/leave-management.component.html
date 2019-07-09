@@ -11,7 +11,7 @@
     <table mat-table class="full-width-table" matSort aria-label="Elements">
         <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
-            <td mat-cell *matCellDef="let row">{{row.id}}</td>
+            <td mat-cell *matCellDef="let row">{{row.user_id}}</td>
         </ng-container>
 
         <ng-container matColumnDef="name">
@@ -62,8 +62,9 @@
         <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef>Action</th>
             <td mat-cell *matCellDef="let row">
-                <button class="btn btn-success btn-sm mr-1" id="btn_edit_employee">Accept</button>
-                <button class="btn btn-danger btn-sm" id="btn_delete_employee">Decline</button>
+                <button class="btn btn-success btn-sm mr-1" id="btn_edit_employee" (click)="leaveApplication(row.id, 1)">Accept</button>
+                <button class="btn btn-danger btn-sm mr-1" id="btn_delete_employee" (click)="leaveApplication(row.id, 0)">Decline</button>
+                <button *ngIf="row.approval_status === 'Accepted'" class="btn btn-warning btn-sm" id="btn_delete_employee" (click)="cancelLeave(row.id)">Cancel</button>
             </td>
         </ng-container>
 
